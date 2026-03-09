@@ -1,0 +1,80 @@
+package helo.j;
+
+import java.util.Scanner;
+
+public class matrixops {
+
+	 static void Addmat(int a[][],int b[][],int r,int c) {
+		int addresult[][]=new int[r][c];
+		for(int i=0;i<r;i++)
+		{
+			for(int j=0;j<c;j++)
+			{
+				addresult[i][j]=a[i][j]+b[i][j];
+			}
+		}
+		System.out.println("The matrix Addition is:");
+		for(int i=0;i<r;i++)
+		{
+			for(int j=0;j<c;j++)
+			{
+			  System.out.println(addresult[i][j]+" ");	
+			}
+		}
+		// TODO Auto-generated method stub
+
+	}
+	 static void Submat(int a[][],int b[][],int r,int c) {
+			int subresult[][]=new int[r][c];
+			for(int i=0;i<r;i++)
+			{
+				for(int j=0;j<c;j++)
+				{
+					subresult[i][j]=a[i][j]-b[i][j];
+				}
+			}
+			System.out.println("The matrix subtraction is:");
+			for(int i=0;i<r;i++)
+			{
+				for(int j=0;j<c;j++)
+				{
+				  System.out.println(subresult[i][j]+" ");	
+				}
+			}
+			// TODO Auto-generated method stub
+
+		}
+		 
+	 
+
+public static void main(String[] args)
+{
+    Scanner sc=new Scanner(System.in);
+    System.out.println("Enter the Number of Rows:");
+    int r=sc.nextInt();
+    System.out.println("Enter the number of columns:");
+    int c=sc.nextInt();
+    int a[][]=new int[r][c];
+    int b[][]=new int[r][c];
+    
+	System.out.println("Elements for matrix A:");
+	for(int i=0;i<r;i++)
+	{
+		for(int j=0;j<c;j++)
+		{
+			 a[i][j]=sc.nextInt();
+		}
+	}
+	System.out.println("Elements for matrix B:");
+	for(int i=0;i<r;i++)
+	{
+		for(int j=0;j<c;j++)
+		{
+			b[i][j]=sc.nextInt();
+		}
+	}
+	Addmat(a,b,r,c);
+	Submat(a,b,r,c);
+}
+}
+
