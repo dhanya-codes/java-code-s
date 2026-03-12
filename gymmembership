@@ -1,0 +1,99 @@
+package helo.j;
+
+import java.util.Scanner;
+
+class gymmember
+{
+	int memberid;
+	String membername;
+	String membershiptype;
+	int durationmonths;
+	double monthlyfee;
+	double registrationfee;
+	double discountrate;
+	double totalamount;
+	double membershipfee;
+	double discountamt;
+	gymmember(int id,String name,String type,int month,double fee,double reg,double dis)
+	{
+	 memberid=id;
+	 membername=name;
+	 membershiptype=type;
+	 durationmonths=month;
+	 monthlyfee=fee;
+	 registrationfee=reg;
+	 discountrate=dis;
+	}
+	void calculatemembershipfee()
+	{
+	  membershipfee=durationmonths*monthlyfee;
+	}
+	void calculatediscount()
+	{
+		discountamt=membershipfee*discountrate/100;
+	}
+	void calculatetotalamt()
+	{
+		totalamount=membershipfee*discountrate+registrationfee;
+	}
+	void display()
+	{
+		System.out.println("MemberID:"+memberid);
+		System.out.println("MemberName:"+membername);
+		System.out.println("Membership Type:"+membershiptype);
+		System.out.println("Durationmonths"+durationmonths);
+		System.out.println("Monthlyfee:"+monthlyfee);
+		System.out.println("Registrationfee:"+registrationfee);
+		System.out.println("Discount Rate:"+discountrate);
+		System.out.println("Totalamount:"+totalamount);
+		System.out.println("Membershipfee:"+membershipfee);
+		System.out.println("Discountamount:"+discountamt);
+	}
+	
+	
+}
+
+public class gymmembership {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the no.of memebers:");
+		int n=sc.nextInt();
+		gymmember[] g=new gymmember[n];
+		double totalrevenue=0;
+		for(int i=0;i<n;i++)
+		{
+			System.out.println("Member Details"+(i+1));
+			System.out.println("Enter the Memberid:");
+			int memberid=sc.nextInt();
+			System.out.println("Enter the Membername:");
+		     String  membername=sc.next();
+			System.out.println("Enter the Membershiptype:");
+			String membershiptype=sc.next();
+			System.out.println("Enter the durationmonths:");
+			int durationmonths=sc.nextInt();
+			System.out.println("Enter the Monthlyfee:");
+			double monthlyfee=sc.nextDouble();
+			System.out.println("Enter the registrationfee:");
+			double registrationfee=sc.nextDouble();
+			System.out.println("Enter the Discountrate:");
+			double discountrate=sc.nextDouble();
+		g[i]=new gymmember(memberid,membername,membershiptype,durationmonths,monthlyfee,registrationfee,discountrate);
+		g[i].calculatemembershipfee();
+		g[i].calculatediscount();
+		g[i].calculatetotalamt();
+		totalrevenue+=g[i].totalamount;
+		
+	}
+		System.out.println("=========DETAILS========");
+		for(int i=0;i<n;i++)
+		{
+			g[i].display();
+			
+		}
+		System.out.println("Total Revenue is"+totalrevenue);
+
+	}
+
+}
