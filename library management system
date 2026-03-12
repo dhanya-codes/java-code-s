@@ -1,0 +1,82 @@
+package helo.j;
+
+import java.util.Scanner;
+
+class book
+{
+    int bookid;
+	String title;
+	String author;
+	double price;
+	int quantity;
+	double fineperday;
+	int dayslate;
+	double totalfine;
+	double stockvalue;
+	 
+    void calculatestockvalue()
+	{
+	  stockvalue=price*quantity;
+	}
+    void calculatefine()
+    {
+    	totalfine=fineperday*dayslate;
+    }
+    void display()
+    {
+    	System.out.println("Book Id:"+bookid);
+    	System.out.println("Book Title:"+title);
+    	System.out.println("Author:"+author);
+    	System.out.println("Book Price:"+price);
+    	System.out.println("Book Quantity:"+quantity);
+    	System.out.println("Days late:"+dayslate);
+    	System.out.println(" Total Stock Value:"+stockvalue);
+    	System.out.println("Total Fine:"+totalfine );
+    }
+   
+}
+
+public class library {
+		  public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			  Scanner sc =new Scanner(System.in);
+			  System.out.println("Enter the number of books:");
+			  int n=sc.nextInt();
+			  book[] b=new book[n];
+			  System.out.println("Book Details:");
+			  double totalinventoryval=0;
+			  for(int i=0;i<n;i++)
+			  {
+				  System.out.println("Details for book"+(i+1));				  b[i]=new book();
+				  System.out.println("Enter the Book id:");
+				  b[i].bookid=sc.nextInt();
+				  System.out.println("Enter the Book title:");
+				  b[i].title=sc.next();
+				  System.out.println("Enter the Book Author:");
+				  b[i].author=sc.next();
+				  System.out.println("Enter the Book price:");
+				  b[i].price=sc.nextDouble();
+				  System.out.println("Enter the Book quantity:");
+				  b[i].quantity=sc.nextInt();
+				  System.out.println("Enter fine per day:");
+				  b[i].fineperday=sc.nextDouble();
+				  System.out.println("Enter the no of days late:");
+				  b[i].dayslate=sc.nextInt();
+				  b[i].calculatefine();
+				  b[i].calculatestockvalue();
+				  totalinventoryval+=b[i].stockvalue;
+			  }
+			  System.out.println("Book Details:");
+			  {
+				  for(int i=0;i<n;i++)
+				  {
+					  b[i].display();
+				  }
+				  System.out.println("Total Inventory Value:"+totalinventoryval);
+			  }
+			   
+			  
+
+	}
+
+}
